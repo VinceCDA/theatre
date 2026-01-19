@@ -1,0 +1,19 @@
+services:
+  database:
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_DATABASE: theatre_test
+      MYSQL_USER: theatre
+      MYSQL_PASSWORD: theatre
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "3311:3306"
+    volumes:
+      - database_test_data:/var/lib/mysql
+  adminer:
+    image: adminer
+    ports:
+      - "8082:8080"
+volumes:
+  database_test_data:
